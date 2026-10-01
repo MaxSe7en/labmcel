@@ -33,7 +33,7 @@ export const site = {
   reach: ["Accra", "Kumasi", "Takoradi", "Tamale"],
 
   meta: {
-    title: "labmcel · Medical equipment and laboratory supplies in Ghana",
+    title: "labmcel · Medical equipment and laboratory supplies for Ghana",
     description:
       "labmcel supplies hospitals, clinics, pharmacies and laboratories across Ghana with rapid test kits, patient monitors, laboratory equipment, surgical consumables and hospital furniture.",
   },
@@ -63,9 +63,9 @@ export const site = {
   ],
 
   cta: {
-    quote: "Request a quote",
-    catalogue: "See the catalogue",
-    whatsapp: "Chat on WhatsApp",
+    quote: "Request a quotation",
+    catalogue: "View product catalogue",
+    whatsapp: "Talk to us on WhatsApp",
     email: "Email this request",
   },
 
@@ -78,16 +78,16 @@ export const site = {
   },
 
   closing: {
-    heading: "Send the list.|*We will price it.*",
+    heading: "Share your requirement.|*We will price it.*",
     text: "Item, quantity, and where it is going. You get a quote in cedis, with what is in stock and what has to come in.",
   },
 
   home: {
     description:
       "labmcel supplies hospitals, clinics, pharmacies and laboratories across Ghana with rapid test kits, monitors, analyzers, surgical consumables and hospital furniture.",
-    kicker: "Medical and laboratory supply",
-    heading: "For the bench|*and the bedside.*",
-    lede: "labmcel equips hospitals, clinics, pharmacies and laboratories across Ghana. Rapid tests, monitors, analyzers, surgical consumables and the furniture that holds a ward together. Quoted in cedis. Delivered with the paperwork.",
+    kicker: "Medical & laboratory supply",
+    heading: "Medical supplies for|*the people who care.*",
+    lede: "A dependable supply partner for hospitals, clinics, pharmacies and laboratories across Ghana. Source diagnostic kits, patient monitoring equipment, laboratory supplies, surgical consumables and essential hospital equipment through one professional procurement desk.",
     facts: [
       { mark: "GH₵", label: "Quotes in cedis" },
       { mark: "MoMo", label: "Mobile Money, bank or invoice" },
@@ -95,9 +95,9 @@ export const site = {
       { mark: "Papers", label: "Batch, expiry, documents" },
     ],
     catalogueKicker: "Catalogue",
-    catalogueHeading: "Six groups. *One desk to call.*",
+    catalogueHeading: "The essential categories|*under one roof.*",
     catalogueLede:
-      "If it is not listed, send the list anyway. Most orders start as a note from the ward, not a browse.",
+      "Need something specific? Send your procurement list, specification or a photo of the item. We can review the requirement and prepare a quotation.",
     audiencesKicker: "Who orders",
     audiencesHeading: "The people who keep|the facility running.",
     audiences: [
@@ -123,7 +123,7 @@ export const site = {
       },
     ],
     reasonsKicker: "Why facilities call back",
-    reasonsHeading: "Plain terms, *then the goods.*",
+    reasonsHeading: "Clear quotations. *Reliable supply.*",
     reasons: [
       {
         title: "The paperwork travels with the box",
@@ -143,14 +143,14 @@ export const site = {
       },
     ],
     orderKicker: "Ordering",
-    orderHeading: "Four steps, *no portal.*",
-    orderLede: "You do not need an account. A message with the list is enough to start.",
+    orderHeading: "A straightforward|*procurement process.*",
+    orderLede: "Send your requirement by WhatsApp, phone or email. We confirm specifications, quantities and availability before you place the order.",
     orderLink: "Read how an order moves",
     steps: [
-      { title: "Send the list", text: "Item, quantity, destination." },
-      { title: "We price it", text: "A quote in cedis, stock marked clearly." },
-      { title: "You confirm", text: "MoMo, bank, cheque or invoice." },
-      { title: "It arrives", text: "Tracked. Equipment is installed." },
+      { title: "Share your requirement", text: "Item, quantity, destination." },
+      { title: "Receive a quotation", text: "A quote in cedis, stock marked clearly." },
+      { title: "Confirm the order", text: "MoMo, bank, cheque or invoice." },
+      { title: "Delivery & support", text: "Delivered to your facility." },
     ],
   },
 
@@ -159,8 +159,8 @@ export const site = {
     description:
       "Rapid test kits, patient monitoring, laboratory equipment, surgical consumables, imaging and hospital furniture from labmcel in Ghana.",
     kicker: "Catalogue",
-    heading: "What we *keep moving.*",
-    lede: "Six groups cover most of what a facility reorders. Names below are the kinds of goods, not a fixed price list — pricing depends on brand, pack size and quantity.",
+    heading: "Medical equipment & supplies|*for every facility.*",
+    lede: "Explore our core supply categories. Product availability, specifications and pricing can vary by brand, pack size and order quantity.",
     missing: "Cannot find the item? Put the name, the size and a photo of the old unit in a quote request.",
     folio: "02",
   },
@@ -403,7 +403,7 @@ export const site = {
       "Request a labmcel quote by WhatsApp, email or phone. Send the item, the quantity and where in Ghana it is going.",
     folio: "05",
     kicker: "Contact",
-    heading: "Send the list.|*We answer with a price.*",
+    heading: "Share your requirement.|*We answer with a price.*",
     lede: "WhatsApp is the fastest desk. Email works if the request has to live in a thread. Either way, write it once in the form and we will open the message for you.",
     channelsHeading: "Direct",
     formHeading: "Quote request",
