@@ -9,26 +9,28 @@ const page = site.ordering;
 ---
 
 <Layout title={page.title} description={page.description}>
-  <header class="wrap page-hero">
-    <p class="folio"><b>{page.folio}</b> {page.title}</p>
-    <p class="kicker">{page.kicker}</p>
-    <h1><Rich text={page.heading} /></h1>
-    <p class="lede">{page.lede}</p>
-  </header>
+  <section class="wrap num-section">
+    <header class="page-hero num-section-head">
+      <p class="folio"><b>{page.folio}</b> {page.title}</p>
+      <p class="kicker">{page.kicker}</p>
+      <h1><Rich text={page.heading} /></h1>
+      <p class="lede">{page.lede}</p>
+    </header>
 
-  <ol class="wrap timeline">
+    <ol class="timeline num-rows">
     {
       page.steps.map((step, index) => (
         <li>
           <span class="num">{String(index + 1).padStart(2, "0")}</span>
-          <div>
+          <div class="row-copy">
             <h2>{step.title}</h2>
             <p>{step.text}</p>
           </div>
         </li>
       ))
     }
-  </ol>
+    </ol>
+  </section>
 
   <section class="wrap block" aria-labelledby="pay-title">
     <p class="kicker">{page.payKicker}</p>

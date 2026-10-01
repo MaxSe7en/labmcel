@@ -8,26 +8,28 @@ const page = site.about;
 ---
 
 <Layout title={page.title} description={page.description}>
-  <header class="wrap page-hero">
-    <p class="folio"><b>{page.folio}</b> {page.title}</p>
-    <p class="kicker">{page.kicker}</p>
-    <h1><Rich text={page.heading} /></h1>
-    <p class="lede">{page.lede}</p>
-  </header>
+  <section class="wrap num-section">
+    <header class="page-hero num-section-head">
+      <p class="folio"><b>{page.folio}</b> {page.title}</p>
+      <p class="kicker">{page.kicker}</p>
+      <h1><Rich text={page.heading} /></h1>
+      <p class="lede">{page.lede}</p>
+    </header>
 
-  <ol class="wrap chapter-list">
+    <ol class="chapter-list num-rows">
     {
       page.chapters.map((chapter, index) => (
         <li>
-          <h2>
-            <span class="num">{String(index + 1).padStart(2, "0")}</span>
-            {chapter.title}
-          </h2>
-          <p>{chapter.text}</p>
+          <span class="num">{String(index + 1).padStart(2, "0")}</span>
+          <div class="row-copy">
+            <h2>{chapter.title}</h2>
+            <p>{chapter.text}</p>
+          </div>
         </li>
       ))
     }
-  </ol>
+    </ol>
+  </section>
 
   <section class="wrap reach-band" aria-labelledby="reach-title">
     <h2 id="reach-title">{page.reachHeading}</h2>
