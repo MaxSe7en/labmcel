@@ -1,0 +1,146 @@
+---
+import Layout from "../components/Layout.astro";
+import Rich from "../components/Rich.astro";
+import Icon from "../components/Icon.astro";
+import { site } from "../content/site";
+
+const page = site.contact;
+const waText = encodeURIComponent(page.whatsappPrefill);
+---
+
+<Layout title={page.title} description={page.description}>
+  <header class="wrap page-hero">
+    <p class="folio"><b>{page.folio}</b> {page.title}</p>
+    <p class="kicker">{page.kicker}</p>
+    <h1><Rich text={page.heading} /></h1>
+    <p class="lede">{page.lede}</p>
+  </header>
+
+  <div class="wrap contact-grid">
+    <section aria-labelledby="channels-title">
+      <h2 id="channels-title" class="subhead" style="margin-top:0">{page.channelsHeading}</h2>
+      <ul class="channels">
+        <li>
+          <Icon name="chat" size={20} />
+          <div>
+            <span>{site.ui.whatsappShort}</span>
+            <a href={`https://wa.me/${site.phoneDigits}?text=${waText}`}>{site.phoneDisplay}</a>
+          </div>
+        </li>
+        <li>
+          <Icon name="phone" size={20} />
+          <div>
+            <span>{site.ui.phone}</span>
+            <a href={`tel:+${site.phoneDigits}`}>{site.phoneDisplay}</a>
+          </div>
+        </li>
+        <li>
+          <Icon name="mail" size={20} />
+          <div>
+            <span>{site.ui.email}</span>
+            <a href={`mailto:${site.email}`}>{site.email}</a>
+          </div>
+        </li>
+        <li>
+          <Icon name="pin" size={20} />
+          <div>
+            <span>{site.ui.desk}</span>
+            <a href="/about">{site.address}</a>
+          </div>
+        </li>
+        {
+          site.hours && (
+            <li>
+              <Icon name="file" size={20} />
+              <div>
+                <span>{site.about.hoursLabel}</span>
+                {site.hours}
+              </div>
+            </li>
+          )
+        }
+      </ul>
+    </section>
+
+    <form
+      class="quote-form plate"
+      id="quote"
+      data-wa={site.phoneDigits}
+      data-email={site.email}
+      data-missing={page.missing}
+      data-greeting={page.formGreeting}
+      data-subject={page.emailSubject}
+    >
+      <span class="crops" aria-hidden="true"></span>
+      <h2>{page.formHeading}</h2>
+      <div class="fields">
+        <label class="field">
+          <span>{page.fields.name}</span>
+          <input name="name" autocomplete="name" required />
+        </label>
+        <label class="field">
+          <span>{page.fields.facility}</span>
+          <input name="facility" autocomplete="organization" />
+        </label>
+        <label class="field">
+          <span>{page.fields.city}</span>
+          <input name="city" autocomplete="address-level2" />
+        </label>
+        <label class="field">
+          <span>{page.fields.phone}</span>
+          <input name="phone" autocomplete="tel" inputmode="tel" />
+        </label>
+        <label class="field wide">
+          <span>{page.fields.need}</span>
+          <textarea name="need" required placeholder={page.fields.needHint}></textarea>
+        </label>
+      </div>
+      <div class="btn-row">
+        <button class="btn btn-clay" type="submit" data-channel="whatsapp">{site.cta.whatsapp}</button>
+        <button class="btn btn-line" type="submit" data-channel="email">{site.cta.email}</button>
+      </div>
+      <p class="form-note">{page.formNote}</p>
+      <p class="form-error" id="form-error" hidden></p>
+    </form>
+  </div>
+</Layout>
+
+<script>
+  const form = document.getElementById("quote");
+  if (form instanceof HTMLFormElement) {
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const error = document.getElementById("form-error");
+      const data = new FormData(form);
+      const name = String(data.get("name") || "").trim();
+      const need = String(data.get("need") || "").trim();
+      if (!name || !need) {
+        if (error) {
+          error.hidden = false;
+          error.textContent = form.dataset.missing || "";
+        }
+        return;
+      }
+      if (error) error.hidden = true;
+      const facility = String(data.get("facility") || "").trim();
+      const city = String(data.get("city") || "").trim();
+      const phone = String(data.get("phone") || "").trim();
+      const details = [
+        `Name: ${name}`,
+        facility ? `Facility: ${facility}` : "",
+        city ? `City: ${city}` : "",
+        phone ? `Phone: ${phone}` : "",
+      ].filter(Boolean);
+      const text = `${form.dataset.greeting || ""}\n\n${details.join("\n")}\n\n${need}`;
+      const submitter = event.submitter;
+      const channel = submitter instanceof HTMLButtonElement ? submitter.dataset.channel : "whatsapp";
+      if (channel === "email") {
+        const email = form.dataset.email || "";
+        location.href = `mailto:${email}?subject=${encodeURIComponent(form.dataset.subject || "")}&body=${encodeURIComponent(text)}`;
+      } else {
+        const wa = form.dataset.wa || "";
+        location.href = `https://wa.me/${wa}?text=${encodeURIComponent(text)}`;
+      }
+    });
+  }
+</script>

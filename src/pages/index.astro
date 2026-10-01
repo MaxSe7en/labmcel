@@ -1,0 +1,112 @@
+---
+import Layout from "../components/Layout.astro";
+import Rich from "../components/Rich.astro";
+import HeroArt from "../components/HeroArt.astro";
+import Catalogue from "../components/Catalogue.astro";
+import Closing from "../components/Closing.astro";
+import Icon from "../components/Icon.astro";
+import { site } from "../content/site";
+
+const home = site.home;
+---
+
+<Layout description={home.description}>
+  <section class="wrap hero">
+    <div>
+      <p class="kicker">{home.kicker}</p>
+      <h1><Rich text={home.heading} /></h1>
+      <p class="lede">{home.lede}</p>
+      <div class="btn-row">
+        <a class="btn btn-clay" href="/contact">
+          {site.cta.quote}
+          <Icon name="arrow" size={18} />
+        </a>
+        <a class="btn btn-line" href="/products">{site.cta.catalogue}</a>
+      </div>
+    </div>
+    <HeroArt />
+  </section>
+
+  <div class="wrap">
+    <ul class="facts">
+      {
+        home.facts.map((fact) => (
+          <li>
+            <strong>{fact.mark}</strong>
+            <span>{fact.label}</span>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+
+  <section class="wrap block" aria-labelledby="catalogue-title">
+    <div class="block-head">
+      <div>
+        <p class="kicker">{home.catalogueKicker}</p>
+        <h2 id="catalogue-title"><Rich text={home.catalogueHeading} /></h2>
+      </div>
+      <p class="lede">{home.catalogueLede}</p>
+    </div>
+    <Catalogue />
+  </section>
+
+  <section class="wrap block" aria-labelledby="who-title">
+    <p class="kicker">{home.audiencesKicker}</p>
+    <h2 id="who-title"><Rich text={home.audiencesHeading} /></h2>
+    <ul class="audience-grid">
+      {
+        home.audiences.map((group) => (
+          <li>
+            <Icon name={group.icon} />
+            <h3>{group.title}</h3>
+            <p>{group.text}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <section class="wrap block split" aria-labelledby="why-title">
+    <div>
+      <p class="kicker">{home.reasonsKicker}</p>
+      <h2 id="why-title"><Rich text={home.reasonsHeading} /></h2>
+    </div>
+    <ol class="reason-list">
+      {
+        home.reasons.map((reason, index) => (
+          <li>
+            <span class="num">{String(index + 1).padStart(2, "0")}</span>
+            <div>
+              <h3>{reason.title}</h3>
+              <p>{reason.text}</p>
+            </div>
+          </li>
+        ))
+      }
+    </ol>
+  </section>
+
+  <section class="wrap block" aria-labelledby="order-title">
+    <p class="kicker">{home.orderKicker}</p>
+    <h2 id="order-title"><Rich text={home.orderHeading} /></h2>
+    <p class="lede">{home.orderLede}</p>
+    <ol class="step-row">
+      {
+        home.steps.map((step, index) => (
+          <li>
+            <span class="num">{String(index + 1).padStart(2, "0")}</span>
+            <h3>{step.title}</h3>
+            <p>{step.text}</p>
+          </li>
+        ))
+      }
+    </ol>
+    <a class="text-link" href="/ordering">
+      {home.orderLink}
+      <Icon name="arrow" size={18} />
+    </a>
+  </section>
+
+  <Closing />
+</Layout>

@@ -1,0 +1,27 @@
+---
+import { site } from "../content/site";
+import Rich from "./Rich.astro";
+import Icon from "./Icon.astro";
+---
+
+<section class="closing">
+  <div class="wrap closing-in">
+    <div>
+      <h2><Rich text={site.closing.heading} /></h2>
+      <p>{site.closing.text}</p>
+    </div>
+    <div class="closing-actions">
+      <a class="btn btn-clay" href="/contact">
+        {site.cta.quote}
+        <Icon name="arrow" size={18} />
+      </a>
+      <a class="btn btn-line on-dark" href={`https://wa.me/${site.phoneDigits}`}>
+        {site.cta.whatsapp}
+      </a>
+      <p class="closing-meta">
+        <a href={`tel:+${site.phoneDigits}`}>{site.phoneDisplay}</a>
+        <a href={`mailto:${site.email}`}>{site.email}</a>
+      </p>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,59 @@
+---
+import Layout from "../components/Layout.astro";
+import Rich from "../components/Rich.astro";
+import Closing from "../components/Closing.astro";
+import { site } from "../content/site";
+
+const page = site.about;
+---
+
+<Layout title={page.title} description={page.description}>
+  <header class="wrap page-hero">
+    <p class="folio"><b>{page.folio}</b> {page.title}</p>
+    <p class="kicker">{page.kicker}</p>
+    <h1><Rich text={page.heading} /></h1>
+    <p class="lede">{page.lede}</p>
+  </header>
+
+  <ol class="wrap chapter-list">
+    {
+      page.chapters.map((chapter, index) => (
+        <li>
+          <h2>
+            <span class="num">{String(index + 1).padStart(2, "0")}</span>
+            {chapter.title}
+          </h2>
+          <p>{chapter.text}</p>
+        </li>
+      ))
+    }
+  </ol>
+
+  <section class="wrap reach-band" aria-labelledby="reach-title">
+    <h2 id="reach-title">{page.reachHeading}</h2>
+    <div>
+      <p>{page.reachText}</p>
+      <ul class="city-row">
+        {site.reach.map((city) => <li>{city}</li>)}
+      </ul>
+      {
+        (site.registration || site.hours) && (
+          <div class="meta-lines">
+            {site.registration && (
+              <p>
+                <b>{page.registrationLabel}.</b> {site.registration}
+              </p>
+            )}
+            {site.hours && (
+              <p>
+                <b>{page.hoursLabel}.</b> {site.hours}
+              </p>
+            )}
+          </div>
+        )
+      }
+    </div>
+  </section>
+
+  <Closing />
+</Layout>

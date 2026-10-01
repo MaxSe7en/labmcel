@@ -1,0 +1,19 @@
+---
+import Layout from "../components/Layout.astro";
+import Rich from "../components/Rich.astro";
+import { site } from "../content/site";
+
+const page = site.notFound;
+---
+
+<Layout title={page.title} description={page.lede}>
+  <header class="wrap page-hero" style="padding-bottom: 4rem">
+    <p class="kicker">{page.kicker}</p>
+    <h1><Rich text={page.heading} /></h1>
+    <p class="lede">{page.lede}</p>
+    <div class="btn-row">
+      <a class="btn btn-clay" href="/">{page.home}</a>
+      <a class="btn btn-line" href="/products">{page.catalogue}</a>
+    </div>
+  </header>
+</Layout>

@@ -1,0 +1,84 @@
+---
+import Layout from "../../components/Layout.astro";
+import Picture from "../../components/Picture.astro";
+import Icon from "../../components/Icon.astro";
+import Closing from "../../components/Closing.astro";
+import { site, type Category } from "../../content/site";
+
+export function getStaticPaths() {
+  return site.categories.map((category) => ({
+    params: { slug: category.slug },
+    props: { category },
+  }));
+}
+
+interface Props {
+  category: Category;
+}
+
+const { category } = Astro.props;
+const others = site.categories.filter((item) => item.slug !== category.slug);
+---
+
+<Layout title={category.title} description={category.description}>
+  <header class="wrap page-hero">
+    <p class="folio"><b>{category.code}</b> {site.products.title}</p>
+    <p class="kicker">{category.kicker}</p>
+    <h1>{category.title}</h1>
+    <p class="lede">{category.intro}</p>
+  </header>
+
+  <article class="wrap page-grid">
+    <div class="spread-art plate">
+      <span class="crops" aria-hidden="true"></span>
+      <Picture name={category.picture} />
+      <p class="figcap">{category.code} — {category.title}</p>
+    </div>
+    <div>
+      <p class="note">{category.note}</p>
+      <p class="fit"><b>{site.ui.whereItLands}</b> {category.fit}</p>
+      <h2 class="subhead">{site.ui.inThisGroup}</h2>
+      <ul class="spec-list">
+        {
+          category.items.map((item) => (
+            <li>
+              <Icon name="plus" size={16} />
+              <span>{item}</span>
+            </li>
+          ))
+        }
+      </ul>
+      <div class="btn-row">
+        <a class="btn btn-clay" href="/contact">{site.cta.quote}</a>
+        <a class="btn btn-line" href="/products">{site.ui.catalogue}</a>
+      </div>
+    </div>
+  </article>
+
+  <section class="wrap block" aria-labelledby="others-title">
+    <h2 id="others-title" class="subhead">{site.ui.otherGroups}</h2>
+    <ul class="index-list" style="margin-top: 0.6rem">
+      {
+        others.map((item) => (
+          <li>
+            <a class="index-row" href={`/products/${item.slug}`}>
+              <span class="num">{item.code}</span>
+              <span class="thumb">
+                <Picture name={item.picture} />
+              </span>
+              <span class="index-copy">
+                <h3>{item.title}</h3>
+                <p>{item.summary}</p>
+              </span>
+              <span class="go" aria-hidden="true">
+                <Icon name="arrow" size={18} />
+              </span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <Closing />
+</Layout>

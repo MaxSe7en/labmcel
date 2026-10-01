@@ -1,0 +1,67 @@
+---
+import Layout from "../components/Layout.astro";
+import Rich from "../components/Rich.astro";
+import Icon from "../components/Icon.astro";
+import Closing from "../components/Closing.astro";
+import { site } from "../content/site";
+
+const page = site.ordering;
+---
+
+<Layout title={page.title} description={page.description}>
+  <header class="wrap page-hero">
+    <p class="folio"><b>{page.folio}</b> {page.title}</p>
+    <p class="kicker">{page.kicker}</p>
+    <h1><Rich text={page.heading} /></h1>
+    <p class="lede">{page.lede}</p>
+  </header>
+
+  <ol class="wrap timeline">
+    {
+      page.steps.map((step, index) => (
+        <li>
+          <span class="num">{String(index + 1).padStart(2, "0")}</span>
+          <div>
+            <h2>{step.title}</h2>
+            <p>{step.text}</p>
+          </div>
+        </li>
+      ))
+    }
+  </ol>
+
+  <section class="wrap block" aria-labelledby="pay-title">
+    <p class="kicker">{page.payKicker}</p>
+    <h2 id="pay-title">{page.payHeading}</h2>
+    <ul class="pay-grid">
+      {
+        page.payments.map((method) => (
+          <li>
+            <Icon name={method.icon} />
+            <h3>{method.title}</h3>
+            <p>{method.text}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <section class="wrap block" aria-labelledby="include-title">
+    <h2 id="include-title">{page.includeHeading}</h2>
+    <ul class="check-list">
+      {
+        page.include.map((item) => (
+          <li>
+            <Icon name="check" size={18} />
+            <span>{item}</span>
+          </li>
+        ))
+      }
+    </ul>
+    <div class="btn-row">
+      <a class="btn btn-clay" href="/contact">{site.cta.quote}</a>
+    </div>
+  </section>
+
+  <Closing />
+</Layout>

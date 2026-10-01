@@ -1,0 +1,18 @@
+---
+import { rich } from "../lib/rich";
+
+interface Props {
+  text: string;
+}
+
+const parts = rich(Astro.props.text);
+---
+
+{
+  parts.map((part) => (
+    <>
+      {part.em ? <em>{part.text}</em> : part.text}
+      {part.breakAfter && <br />}
+    </>
+  ))
+}

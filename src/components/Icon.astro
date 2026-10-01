@@ -1,0 +1,82 @@
+---
+interface Props {
+  name: string;
+  size?: number;
+}
+
+const { name, size = 24 } = Astro.props;
+---
+
+<svg
+  class="icon"
+  width={size}
+  height={size}
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.6"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  aria-hidden="true"
+>
+  {name === "arrow" && <path d="M4 12h15M13 6l6 6-6 6" />}
+  {name === "phone" && (
+    <path d="M8 3.5h2.2l1.2 3-1.6 1a12 12 0 0 0 5.7 5.7l1-1.6 3 1.2V18a2 2 0 0 1-2.2 2A15.5 15.5 0 0 1 4 6.7 2 2 0 0 1 6 4.5" />
+  )}
+  {name === "mail" && (
+    <>
+      <rect x="3" y="5" width="18" height="14" rx="1.5" />
+      <path d="M4 7l8 6 8-6" />
+    </>
+  )}
+  {name === "pin" && (
+    <>
+      <path d="M12 21s6-5.1 6-10a6 6 0 1 0-12 0c0 4.9 6 10 6 10z" />
+      <circle cx="12" cy="11" r="1.7" />
+    </>
+  )}
+  {name === "chat" && (
+    <path d="M5 16.5 3.5 20l3.8-1.4A8.5 8.5 0 1 0 5 16.5z" />
+  )}
+  {name === "menu" && <path d="M4 7h16M4 12h16M4 17h10" />}
+  {name === "close" && <path d="M6 6l12 12M18 6 6 18" />}
+  {name === "plus" && <path d="M12 5v14M5 12h14" />}
+  {name === "pulse" && <path d="M3 12h4l2.2-5 3.6 10L15 12h6" />}
+  {name === "bag" && (
+    <>
+      <path d="M6 8h12l-.8 11.2a1.5 1.5 0 0 1-1.5 1.3H8.3a1.5 1.5 0 0 1-1.5-1.3L6 8z" />
+      <path d="M9 8V6.5A3 3 0 0 1 12 3.5 3 3 0 0 1 15 6.5V8" />
+    </>
+  )}
+  {name === "scope" && (
+    <>
+      <path d="M8 19h9" />
+      <path d="M9 19c0-4 1-6 3.2-8.2" />
+      <circle cx="14.5" cy="8" r="3.2" />
+      <path d="M17 10.2 20 13" />
+    </>
+  )}
+  {name === "card" && (
+    <>
+      <rect x="3" y="6" width="18" height="12" rx="1.5" />
+      <path d="M3 10h18" />
+    </>
+  )}
+  {name === "file" && (
+    <>
+      <path d="M7 3.5h7l4 4V20.5H7z" />
+      <path d="M14 3.5V8h4M9 13h6M9 16.5h4" />
+    </>
+  )}
+  {name === "truck" && (
+    <>
+      <path d="M3 7h11v8H3zM14 10h4l3 3v2h-7" />
+      <circle cx="7" cy="17.5" r="1.4" />
+      <circle cx="17" cy="17.5" r="1.4" />
+    </>
+  )}
+  {name === "check" && <path d="M5 12.5 9.2 17 19 7" />}
+  {name === "wrench" && (
+    <path d="M14.5 6.2a3.2 3.2 0 0 0 4.3 4.3L14 15.3 8.7 10l4.8-4.8zM8 15.2 4.8 18.4a1.6 1.6 0 0 0 2.2 2.2L10.2 17" />
+  )}
+</svg>

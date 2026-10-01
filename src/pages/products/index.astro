@@ -1,0 +1,25 @@
+---
+import Layout from "../../components/Layout.astro";
+import Rich from "../../components/Rich.astro";
+import Catalogue from "../../components/Catalogue.astro";
+import Closing from "../../components/Closing.astro";
+import { site } from "../../content/site";
+
+const page = site.products;
+---
+
+<Layout title={page.title} description={page.description}>
+  <header class="wrap page-hero">
+    <p class="folio"><b>{page.folio}</b> {page.title}</p>
+    <p class="kicker">{page.kicker}</p>
+    <h1><Rich text={page.heading} /></h1>
+    <p class="lede">{page.lede}</p>
+  </header>
+
+  <section class="wrap block" style="padding-top: 2rem">
+    <Catalogue level={2} />
+    <p class="missing">{page.missing}</p>
+  </section>
+
+  <Closing />
+</Layout>

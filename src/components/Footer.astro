@@ -1,0 +1,62 @@
+---
+import { site } from "../content/site";
+import Mark from "./Mark.astro";
+import Icon from "./Icon.astro";
+
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="wrap foot">
+    <div class="foot-brand">
+      <a class="wordmark on-dark" href="/">
+        <Mark size={40} />
+        <span>
+          <strong>{site.name}</strong>
+          <small>{site.descriptor}</small>
+        </span>
+      </a>
+      <p>{site.footer.blurb}</p>
+    </div>
+
+    <div>
+      <h2>{site.footer.pagesHeading}</h2>
+      <ul>
+        {
+          site.nav.map((item) => (
+            <li>
+              <a href={item.href}>{item.label}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <div>
+      <h2>{site.footer.contactHeading}</h2>
+      <ul class="foot-contact">
+        <li>
+          <Icon name="phone" size={18} />
+          <a href={`tel:+${site.phoneDigits}`}>{site.phoneDisplay}</a>
+        </li>
+        <li>
+          <Icon name="mail" size={18} />
+          <a href={`mailto:${site.email}`}>{site.email}</a>
+        </li>
+        <li>
+          <Icon name="pin" size={18} />
+          <span>{site.address}</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap foot-base">
+    <p>© {year} {site.name}. {site.footer.rights}</p>
+    <p>{site.reach.join(" · ")}</p>
+  </div>
+</footer>
+
+<a class="wa-dock" href={`https://wa.me/${site.phoneDigits}`} aria-label={site.ui.whatsapp}>
+  <Icon name="chat" size={22} />
+  <span>{site.ui.whatsappShort}</span>
+</a>
