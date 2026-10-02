@@ -1,0 +1,8 @@
+# Static Astro site — no @astrojs/cloudflare adapter needed.
+# Cloudflare Workers Builds runs: npm run build && npx wrangler deploy
+name = "labmcel"
+compatibility_date = "2026-07-03"
+
+[assets]
+directory = "./dist"
+not_found_handling = "404-page"
