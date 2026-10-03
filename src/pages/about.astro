@@ -16,6 +16,16 @@ const page = site.about;
       <p class="lede">{page.lede}</p>
     </header>
 
+    <figure class="page-photo">
+      <img
+        src="/photos/lab.jpg"
+        alt="A scientist working at a laboratory microscope"
+        width="1400"
+        height="933"
+        decoding="async"
+      />
+    </figure>
+
     <ol class="chapter-list num-rows">
     {
       page.chapters.map((chapter, index) => (

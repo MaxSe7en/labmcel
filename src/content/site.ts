@@ -52,7 +52,7 @@ export const site = {
     otherGroups: "Other groups",
     inThisGroup: "In this group",
     whereItLands: "Where it lands.",
-    fig: "Fig. 01 — Instruments and kits",
+    fig: "Fig. 01 — Analyzers on the bench",
   },
 
   nav: [

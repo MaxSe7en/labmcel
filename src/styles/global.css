@@ -1052,12 +1052,19 @@ h1 em, h2 em, .index-copy h2 em, .index-copy h3 em {
 }
 
 .hero-art .plate {
-  padding: 1.25rem;
+  padding: 0;
+  aspect-ratio: 4 / 3;
   overflow: hidden;
   border: 1px solid #d7e3ea;
   border-radius: 1.25rem;
-  background: linear-gradient(145deg, #fff, #edf5f8);
+  background: #102235;
   box-shadow: 0 22px 60px rgba(16,34,53,.10);
+}
+.hero-art .plate img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 42%;
 }
 .hero-art figcaption {
   margin: .7rem 0 0 .25rem;
@@ -1065,7 +1072,8 @@ h1 em, h2 em, .index-copy h2 em, .index-copy h3 em {
   letter-spacing: .1em;
 }
 .crops {
-  opacity: .45;
+  z-index: 2;
+  opacity: .7;
   background:
     linear-gradient(var(--cobalt), var(--cobalt)) left 14px top 14px / 18px 2px no-repeat,
     linear-gradient(var(--cobalt), var(--cobalt)) left 14px top 14px / 2px 18px no-repeat,
@@ -1141,10 +1149,19 @@ h1 em, h2 em, .index-copy h2 em, .index-copy h3 em {
   height: 5.1rem;
   display: grid;
   place-items: center;
+  overflow: hidden;
   border-radius: .8rem;
   background: #edf5f8;
   border: 1px solid #dce8ee;
 }
+.thumb .photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.photo[data-frame="monitor"] { object-position: 22% center; }
+.photo[data-frame="rotor"] { object-position: center 35%; }
+.photo[data-frame="bed"] { object-position: 28% center; }
 .index-copy h2, .index-copy h3 {
   font-family: var(--serif);
   font-size: clamp(1.25rem, 2.2vw, 1.7rem);
@@ -1261,11 +1278,32 @@ h1 em, h2 em, .index-copy h2 em, .index-copy h3 em {
 }
 .page-grid { padding-top: 2.5rem; }
 .spread-art {
-  padding: 1.5rem;
+  padding: .85rem;
   border: 1px solid var(--line);
   border-radius: 1rem;
   background: #fff;
   box-shadow: 0 14px 35px rgba(16,34,53,.06);
+}
+.spread-art .photo {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: .7rem;
+}
+.page-photo {
+  display: grid;
+  grid-template-columns: var(--num-track) minmax(0, 1fr);
+  column-gap: var(--num-gap);
+  margin: clamp(1.5rem, 3vw, 2.4rem) 0 0;
+}
+.page-photo img {
+  grid-column: 2;
+  width: 100%;
+  aspect-ratio: 16 / 8;
+  object-fit: cover;
+  object-position: center 32%;
+  border: 1px solid var(--line);
+  border-radius: 1rem;
 }
 .note {
   border-left-color: var(--cobalt);
@@ -1422,7 +1460,14 @@ h1 em, h2 em, .index-copy h2 em, .index-copy h3 em {
     gap: 1.75rem;
   }
   .hero h1 { font-size: clamp(2.7rem, 13vw, 4rem); }
-  .hero-art .plate { padding: .75rem; }
+  .hero-art .plate { padding: 0; }
+  .page-photo {
+    grid-template-columns: 1fr;
+  }
+  .page-photo img {
+    grid-column: 1;
+    aspect-ratio: 4 / 3;
+  }
   .facts { border-radius: .75rem; }
   .facts li {
     min-height: auto;

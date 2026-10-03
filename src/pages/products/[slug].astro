@@ -31,7 +31,7 @@ const others = site.categories.filter((item) => item.slug !== category.slug);
   <article class="wrap page-grid">
     <div class="spread-art plate">
       <span class="crops" aria-hidden="true"></span>
-      <Picture name={category.picture} />
+      <Picture name={category.picture} alt={category.title} />
       <p class="figcap">{category.code} — {category.title}</p>
     </div>
     <div>
